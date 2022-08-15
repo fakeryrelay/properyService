@@ -17,12 +17,44 @@
 	
 	<title>Služby 3</title>
 </head>
-<body>
+<body class=""> <!-- .no-scroll-->
 
 
 
 
 	<div class="page">
+		<div class="modal video__modal">
+		  <div class="modal__inner">
+		    <div class="modal__content">
+		      <video class="modal__video" src="assets/videos/room Video.mp4" controls></video>
+		    </div>
+		  </div>
+		</div>		<div class="modal  image__modal"> <!-- .active -->
+		  <div class="modal__inner">
+		    <div class="modal__content">
+		      <img class="modal__img" src="assets/images/work 1.jpg" alt="">
+		    </div>
+		  </div>
+		</div>
+		<div class="mobile-nav">
+		  <ul class="mobile-nav__list" id="mobileNav"> <!-- +active -->
+		    <li class="mobile-nav__item">
+		      <a href="services.html">Služby</a>
+		    </li>
+		    <li class="mobile-nav__item">
+		      <a href="works.html">Naše projekty</a>
+		    </li>
+		    <li class="mobile-nav__item">
+		      <a href="about.html">O nás</a>
+		    </li>
+		    <li class="mobile-nav__item">
+		      <a href="index.html">Kontakty</a>
+		    </li>
+		    <li class="mobile-nav__item">
+		      <a class="orange" href="index.html">DOMLUVIT SCHŮZKU</a>
+		    </li>
+		  </ul>
+		</div>
 		
 		<div class="header__inner">
 		  <div class="container">
@@ -71,7 +103,9 @@
 		    
 		      <div class="header__right">
 		        <a class="btn  btn--preview" href="#">DOMLUVIT SCHŮZKU</a>
-		        <button class="burger"><span></span></button>
+		        <button class="burger" id="burger"> <!-- .active -->
+		          <span></span>
+		        </button>  
 		      </div>
 		    </header> 
 		  </div></div>
@@ -169,9 +203,11 @@
 		        </div>
 		        <div class="footer__contacts-item  footer__contacts-item--mt">
 		          <h3 class="footer__contacts-title">Fakturační údaje:</h3>
-		          <p class="footer__contacts-adress">CZECH PROPERTY SERVICE, S. R. O.</p>
-		          <p class="footer__contacts-adress">Na Plzeňce 1166/4</p>
-		          <p class="footer__contacts-adress">Praha 5 – Smíchov 150 00</p>
+		          <a href="https://goo.gl/maps/SbtKnmoCdFVVzEgz9" target="_blank">
+		            <p class="footer__contacts-adress">CZECH PROPERTY SERVICE, S. R. O.</p>
+		            <p class="footer__contacts-adress">Na Plzeňce 1166/4</p>
+		            <p class="footer__contacts-adress">Praha 5 – Smíchov 150 00</p>
+		          </a>
 		        </div>
 		      </div>
 		
@@ -189,13 +225,13 @@
 		        <a class="footer__contacts-link" href="#">Nakládání s osobními údaji</a>
 		
 		        <div class="footer__social-footer">
-		          <a class="footer__social-item" href="#" target="_blank">
+		          <a class="footer__social-item" href="https://www.linkedin.com/" target="_blank">
 		            <img class="footer__social-icon" src="assets/images/iconLinkedIn.svg" alt="">
 		          </a>
 		          <a class="footer__social-item" href="http://instagram.com/" target="_blank">
 		            <img class="footer__social-icon" src="assets/images/iconInsta.svg" alt="">
 		          </a>
-		          <a class="footer__social-item" href="#" target="_blank">
+		          <a class="footer__social-item" href="https://facebook.com" target="_blank">
 		            <img class="footer__social-icon" src="assets/images/iconFb.svg" alt="">
 		          </a>
 		        </div>

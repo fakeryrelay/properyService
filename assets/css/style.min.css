@@ -373,6 +373,9 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: auto;
 }
+body.no-scroll {
+  overflow: hidden;
+}
 
 a {
   color: inherit;
@@ -389,7 +392,8 @@ a:hover {
 }
 
 .page {
-  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .container {
@@ -424,6 +428,11 @@ a:hover {
 .header__inner {
   padding: 1rem 0 2rem;
   border-bottom: 1px solid #3D433F;
+}
+@media (max-width: 768px) {
+  .header__inner {
+    padding: 0;
+  }
 }
 
 .header__left {
@@ -1189,6 +1198,13 @@ a:hover {
 
 .projects__img-link {
   margin: 3.5rem 0;
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.projects__img-link:hover .projects__img {
+  transform: scale(120%);
+  transition-duration: 4s;
 }
 
 .projects__img {
@@ -1197,6 +1213,7 @@ a:hover {
   height: auto;
   max-width: 38rem;
   border-radius: 10px;
+  transition: transform 1s ease-in-out;
 }
 
 .projects__text {
@@ -1429,6 +1446,7 @@ a:hover {
   margin-top: -14.5rem;
   margin-left: 4rem;
   border-radius: 10px;
+  cursor: pointer;
   overflow: hidden;
 }
 @media (max-width: 768px) {
@@ -1647,7 +1665,7 @@ a:hover {
 }
 
 .footer__contacts-adress {
-  padding: 0.3rem 0;
+  margin: 0.3rem 0;
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
@@ -2105,20 +2123,34 @@ a:hover {
     width: calc(100% + 3rem);
   }
 }
+.works__item:hover .works__item-bg {
+  transform: scale(120%);
+  transition-duration: 4s;
+}
 
-.works__item-bg {
+.works__item-bg__inner {
   display: block;
   width: 80%;
+  height: 100%;
   border-radius: 10px;
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
+  overflow: hidden;
 }
 @media (max-width: 1200px) {
-  .works__item-bg {
+  .works__item-bg__inner {
     width: 100%;
   }
+}
+
+.works__item-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 1s ease-in-out;
 }
 
 .works__inner {
@@ -2235,24 +2267,6 @@ a:hover {
   overflow: hidden;
   position: relative;
 }
-.work__preview:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.33);
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  transition: background-color 0.2s ease-in-out;
-}
-.work__preview:hover .project-preview__play {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-.work__preview:hover:after {
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
 .work__preview-video {
   display: block;
@@ -2295,7 +2309,7 @@ a:hover {
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  gap: 8%;
+  gap: 4%;
   max-width: 120rem;
   margin: 0 auto;
   padding-top: 15rem;
@@ -2307,7 +2321,6 @@ a:hover {
 }
 @media (max-width: 768px) {
   .gallery {
-    gap: 4%;
     padding-top: 8rem;
   }
 }
@@ -2322,33 +2335,45 @@ a:hover {
   }
 }
 
-.gallery__img {
+.gallery__img-inner {
   display: block;
-  width: 46%;
+  width: 48%;
   height: auto;
-  margin-bottom: 8rem;
+  margin-bottom: 6rem;
   border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
 }
 @media (max-width: 992px) {
-  .gallery__img {
-    margin-bottom: 6rem;
+  .gallery__img-inner {
+    margin-bottom: 5rem;
   }
 }
 @media (max-width: 768px) {
-  .gallery__img {
-    width: 48%;
+  .gallery__img-inner {
     margin-bottom: 4rem;
   }
 }
 @media (max-width: 640px) {
-  .gallery__img {
+  .gallery__img-inner {
     margin-bottom: 3rem;
   }
 }
 @media (max-width: 480px) {
-  .gallery__img {
+  .gallery__img-inner {
     margin-bottom: 2.5rem;
   }
+}
+.gallery__img-inner:hover .gallery__img {
+  transform: scale(110%);
+  transition-duration: 4s;
+}
+
+.gallery__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s ease-in-out;
 }
 
 .about {
@@ -2423,16 +2448,10 @@ a:hover {
   border: none;
   background-color: transparent;
   position: absolute;
-  right: 0;
-  top: 50%;
-  z-index: 10;
-  transform: translateY(-50%);
-}
-@media (max-width: 640px) {
-  .burger {
-    top: 40px;
-    transform: none;
-  }
+  right: 1rem;
+  top: 40px;
+  z-index: 100;
+  transform: none;
 }
 .burger span, .burger:before, .burger:after {
   content: "";
@@ -2443,20 +2462,131 @@ a:hover {
   border-radius: 0.15rem;
   position: absolute;
   left: 0;
-  z-index: 10;
+  z-index: 100;
 }
 .burger span {
   top: 50%;
   transform: translateY(-50%);
+  transition: opacity 0.2s ease-in-out;
 }
 .burger:before {
   top: 0;
+  transition: transform 0.2s ease-in-out;
 }
 .burger:after {
   bottom: 0;
+  transition: transform 0.2s ease-in-out;
 }
 @media (max-width: 768px) {
   .burger {
     display: block;
   }
+}
+.burger.active {
+  height: 3rem;
+  transform: translateY(-1);
+}
+.burger.active span {
+  opacity: 0;
+}
+.burger.active:after {
+  top: 50%;
+  transform: rotateZ(45deg);
+}
+.burger.active:before {
+  top: 50%;
+  transform: rotateZ(-45deg);
+}
+
+.mobile-nav {
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  top: 145px;
+  right: 0;
+  z-index: 1;
+}
+@media (max-width: 480px) {
+  .mobile-nav {
+    top: 110px;
+  }
+}
+
+.mobile-nav__list {
+  display: flex;
+  flex-direction: column;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.2s linear;
+}
+.mobile-nav__list.active {
+  height: 205px;
+}
+.mobile-nav__list.active .mobile-nav__item a {
+  transform: scaleY(100%);
+}
+
+.mobile-nav__item {
+  border-bottom: 1px solid #3D433F;
+  text-align: center;
+}
+.mobile-nav__item a {
+  display: inline-block;
+  padding: 1rem 0;
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 500;
+  transform: scaleY(0);
+  transition: transform 0.2s linear;
+}
+.mobile-nav__item a.orange {
+  background-color: #F49714;
+  color: #fff;
+  text-transform: uppercase;
+}
+.mobile-nav__item a:hover {
+  text-decoration: none;
+}
+
+.modal {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  z-index: 1000;
+}
+.modal.active {
+  display: block;
+}
+
+.modal__inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modal__content {
+  display: block;
+  max-width: 1000px;
+  width: 80%;
+  height: auto;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+@media (max-width: 640px) {
+  .modal__content {
+    width: 90%;
+  }
+}
+
+.modal__img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
