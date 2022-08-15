@@ -392,6 +392,10 @@ body {
     line-height: auto;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -1639,6 +1643,7 @@ a:hover {
     margin-top: -14.5rem;
     margin-left: 4rem;
     border-radius: 10px;
+    cursor: pointer;
     overflow: hidden;
 }
 
@@ -1894,7 +1899,7 @@ a:hover {
 }
 
 .footer__contacts-adress {
-    padding: 0.3rem 0;
+    margin: 0.3rem 0;
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 0.15em;
@@ -2428,9 +2433,10 @@ a:hover {
     }
 }
 
-.works__item:hover > .works__item-bg {
+.works__item:hover .works__item-bg {
     -webkit-transform: scale(120%);
     transform: scale(120%);
+    transition-duration: 4s;
 }
 
 .works__item-bg__inner {
@@ -2456,6 +2462,9 @@ a:hover {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
 }
 
 .works__inner {
@@ -2586,27 +2595,6 @@ a:hover {
     position: relative;
 }
 
-.work__preview:after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.33);
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 10;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.work__preview:hover .project-preview__play {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.work__preview:hover:after {
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
 .work__preview-video {
     display: block;
     width: 100%;
@@ -2654,7 +2642,7 @@ a:hover {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    gap: 8%;
+    gap: 4%;
     max-width: 120rem;
     margin: 0 auto;
     padding-top: 15rem;
@@ -2668,7 +2656,6 @@ a:hover {
 
 @media (max-width: 768px) {
     .gallery {
-        gap: 4%;
         padding-top: 8rem;
     }
 }
@@ -2685,37 +2672,53 @@ a:hover {
     }
 }
 
-.gallery__img {
+.gallery__img-inner {
     display: block;
-    width: 46%;
+    width: 48%;
     height: auto;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
     border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 @media (max-width: 992px) {
-    .gallery__img {
-        margin-bottom: 6rem;
+    .gallery__img-inner {
+        margin-bottom: 5rem;
     }
 }
 
 @media (max-width: 768px) {
-    .gallery__img {
-        width: 48%;
+    .gallery__img-inner {
         margin-bottom: 4rem;
     }
 }
 
 @media (max-width: 640px) {
-    .gallery__img {
+    .gallery__img-inner {
         margin-bottom: 3rem;
     }
 }
 
 @media (max-width: 480px) {
-    .gallery__img {
+    .gallery__img-inner {
         margin-bottom: 2.5rem;
     }
+}
+
+.gallery__img-inner:hover .gallery__img {
+    -webkit-transform: scale(110%);
+    transform: scale(110%);
+    transition-duration: 4s;
+}
+
+.gallery__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
 }
 
 .about {
@@ -2926,4 +2929,62 @@ a:hover {
 
 .mobile-nav__item a:hover {
     text-decoration: none;
+}
+
+.modal {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: block;
+}
+
+.modal__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.modal__content {
+    display: block;
+    max-width: 1000px;
+    width: 80%;
+    height: auto;
+    padding: 3px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+@media (max-width: 640px) {
+    .modal__content {
+        width: 90%;
+    }
+}
+
+.modal__img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.contacts {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 10%;
+}
+
+.contacts__item {
+    width: 45%;
 }
