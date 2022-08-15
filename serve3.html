@@ -38,7 +38,7 @@
 		</div>		<div class="modal form__modal">
 		  <div class="modal__inner">
 		    <div class="modal__content  modal__content--form">
-		      <form class="form  form--modal">
+		      <!-- <form class="form  form--modal">
 		        <div class="form__title">Nezávazně se nám ozvěte</div>
 		        <div class="form__item">
 		          <div class="form__item-title">Jmeno*</div>
@@ -56,6 +56,26 @@
 		        </div>
 		
 		        <button id="sendBtn" class="btn  btn--center  btn--form" type="button">DOMLUVIT SCHŮZKU</button>
+		      </form> -->
+		
+		      <form class="form  form--modal" action="https://formspree.io/f/mjvzvaep" method="POST">
+		        <div class="form__title">Nezávazně se nám ozvěte</div>
+		        <label class="form__item">
+		          <p class="form__item-title">Jmeno*</p>
+		          <input class="form__item-input" type="text" name="name" required>
+		        </label>
+		
+		        <label class="form__item">
+		          <p class="form__item-title">Telefonní číslo*</p>
+		          <input class="form__item-input" type="tel" name="tel" required>
+		        </label>
+		
+		        <label class="form__item">
+		          <p class="form__item-title">Email*</p>
+		          <input class="form__item-input" type="email" name="email" required>
+		        </labe>
+		
+		        <button id="sendBtn" class="btn  btn--center  btn--form" type="submit">DOMLUVIT SCHŮZKU</button>
 		      </form>
 		    </div>
 		  </div>
